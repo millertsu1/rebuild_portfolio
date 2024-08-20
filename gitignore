@@ -1,0 +1,21 @@
+# Ignorar el entorno virtual
+venv/
+.venv/
+
+# Ignorar archivos de configuración de PyCharm/VSCode
+.idea/
+.vscode/
+
+# Ignorar archivos de compilación de Python
+*.pyc
+__pycache__/
+
+# Ignorar archivos de logs y bases de datos locales
+*.log
+*.sqlite3
+
+# Ignorar archivos de migraciones generados por Django
+migrations/
+
+# Ignorar archivos sensibles
+.env
