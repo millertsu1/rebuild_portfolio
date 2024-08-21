@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Projects,Tag
+from .models import Projects,Tag,Experience,About
 
 class ProjectAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at')
@@ -14,3 +14,5 @@ class TagAdmin(admin.ModelAdmin):
 
 admin.site.register(Projects, ProjectAdmin)
 admin.site.register(Tag)
+admin.site.register(Experience)
+admin.site.register(About)

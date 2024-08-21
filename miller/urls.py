@@ -6,8 +6,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', core_views.portfolio, name='portfolio'),
-    
+    path('', core_views.home, name='home'),  # Usamos la vista home para la página principal
 ]
 
 if settings.DEBUG:

@@ -8,113 +8,66 @@
 
 
 <main class="main">
-    <section class="column column--left">
-      <!-- profile card -->
-      <article class="card card--profile">
-        <h2 class="card__title">Profile</h2>
-        <div class="card__image-container">
-          <img src="assets/images/profile_miller.webp" alt="imagen profile" />
-        </div>
-        <div class="card__header">
-          <h2 class="card__title">Miller Ladino</h2>
-          <p class="card__subtitle">Front End Developer</p>
-        </div>
-        <div class="card__body">
-          <p class="card_text">
-            I am passionate about my work as
-            a Web Developer with knowledge in SEO, blog content development
-            and video editing. </p>
-          <p class="card_text">I adapt to the project environment very
-            quickly. I have a good foundation of software and database
-            development skills. </p>
-          <p class="card_text">Knowledge and Skills</p>
-          <p class="card_text"> Web Development:</p>
-          <ul class="card_text highlight">
-            <li>HTML </li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-          </ul>
+  <section class="column column--left">
+    <!-- profile card -->
+    <article class="card card--profile">
+      <h2 class="card__title">Profile</h2>
+      {% for profile in abouts %}
+      <div class="card__image-container">
+        <img src={{ profile.image.url }} alt={{ profile.name }} />
+      </div>
+      <div class="card__header">
+        <h2 class="card__title">{{ profile.name }} </h2>
+        <p class="card__subtitle">{{ profile.position }} </p>
+      </div>
+      <div class="card__body">
+        <p class="card_text">
+          {{ profile.description }} </p>
 
-          <p class="card_text">BackEnd:</p>
-          <ul class="card_text highlight">
-            <li>Python</li>
-            <li>SQL</li>
-            <li>Django</li>
-            <li>Wordpress</li>
-          </ul>
+        <div class="buttons">
+          <a type="button" class="button button--primary" data-bs-toggle="tooltip" data-bs-placement="top"
+            title="See Demo" onclick="window.open('{{ profile.down_resume }}', '_blank')" download="Descargar CV">
+            Down CV
+          </a>
+          <a type="button" class="button button--ghost" data-bs-toggle="tooltip" data-bs-placement="top"
+            title="See Demo" onclick="window.open('{{ profile.see_resume }}', '_blank')">
+            See CV
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </article>
 
-          <p class="card_text"> I also have knowledge
-            in customer service, administration and staff coordination.</p>
+    <!-- tarjetas de la experiencia adquirida -->
+    <article class="card card--experience">
+      <h2 class="card__title">Jobs and Experience</h2>
+
+
+      {% for experience in experiences %}
+      <div class="experience">
+        <div class="experience__info">
+          <span class="experience__time">{{ experience.start_date }}</span>
+          <span class="experience__time">{{ experience.end_date }}</span>
+          <div><small>{{ experience.company }}</small></div>
+          <h3 class="experience__job">{{ experience.position }}</h3>
+
+          <p class="experience__description">
+            {{ experience.description }}
           </p>
-          <div class="buttons">
-            <a href="https://drive.google.com/uc?export=download&id=1C-l-YK4-SrmfkjaXiJXtPqKqbQ144WzN"
-              target="_blank" class="button button--primary" download="Descargar CV">Down CV</a>
-            <a href="https://drive.google.com/file/d/1C-l-YK4-SrmfkjaXiJXtPqKqbQ144WzN/view?usp=sharing"
-              class="button button--ghost" target="_blank">See CV</a>
+          <div class="project__tags">
+            {% for tag in experience.tags.all %}
+            <span class="project__tag">{{ tag.name }}</span>
+            {% endfor %}
+
           </div>
         </div>
-      </article>
-      <!-- tarjetas de la experiencia adquirida -->
+      </div>
+      {% endfor %}
 
-      <article class="card card--experience">
-        <h2 class="card__title">Jobs and Experience</h2>
+    </article>
 
-        <div class="experience">
-          <img src="assets/images/logo-design.png" alt="creación de logo" class="experience__image" />
-          <div class="experience__info">
-            <p class="experience__time">Nov 2022 - Currently</p>
-            <small>Nutrabiotics</small>
-            <h3 class="experience__job"> Web Developer, Customer Service, Callcenter, Designer and other roles.</h3>
-
-            <p class="experience__description">
-              In this job I receive order support technology issues, how to use platforms, I also do the work of creating complete websites, order education LMS, Wordpress technologies, additionally I also have web design work.
-            </p>
-          </div>
-        </div>
-
-        <div class="experience">
-          <img src="assets/images/logo-design.png" alt="creación de logo" class="experience__image" />
-          <div class="experience__info">
-            <p class="experience__time">Jan 2021 - Currently</p>
-            <small>Fokiucode, Tecnosoluciones, RedArcade</small>
-            <h3 class="experience__job"> Web Developer, Editor, Designer and other roles.</h3>
-
-            <p class="experience__description">
-              Content creator for YouTube, Facebook, Linkedin and other social networks, I am also a developer and
-              designer for my own websites, graphic designer using tools like Photoshop, Canva, Kdenlive
-            </p>
-          </div>
-        </div>
-
-        <div class="experience">
-          <img src="assets/images/logo-design.png" alt="creación de logo" class="experience__image" />
-          <div class="experience__info">
-            <p class="experience__time">Jan 2017 - Aug 2022</p>
-            <small>Smart Solutions</small>
-            <h3 class="experience__job">Customer service, administration, call center and building websites.</h3>
-
-            <p class="experience__description">
-              Support and administration, inventory control and building websites and applications.
-            </p>
-          </div>
-        </div>
-
-        <div class="experience">
-          <img src="assets/images/logo-design.png" alt="creación de logo" class="experience__image" />
-          <div class="experience__info">
-            <p class="experience__time">Jan 2011 - Nov 2016</p>
-            <small>Quorum Computer</small>
-            <h3 class="experience__job">Electronic Technician.</h3>
-
-            <p class="experience__description">
-              Support and repair multiple devices like computers, smartphones and other technologies.
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <!-- este es el módulo de los Hobbies -->
-     <!--  <article class="card card__hobbies">
+    <!-- este es el módulo de los Hobbies -->
+    <!--  <article class="card card__hobbies">
         <h2 class="card__title">Hobbies</h2>
         <div class="card__image-container">
           <img src="assets/images/playgames.png" alt="imagen de jugador de videojuegos" class="experience__image" />
@@ -131,164 +84,167 @@
           This job requires constant learning. reading documentation and information in blogs, pdfs and books is very important to develop our programming skills. But I don't just read documentation or technical books, I read science fiction books.
         </p>
       </article> -->
-      <!-- este es el fin del módulo de los Hobbies -->
-    </section>
-    <section class="column column--right">
-      <article class="card">
-        <h2 class="card__title">Front-End</h2>
-        <small>Years of experience 0-3 </small>
+    <!-- este es el fin del módulo de los Hobbies -->
+  </section>
+  <section class="column column--right">
+    <article class="card">
+      <h2 class="card__title">Front-End</h2>
+      <small>Years of experience 0-3 </small>
 
-        <div class="skills">
-          <div class="skills__item">
-            <p class="skills__tech">HTML</p>
-            <div class="skills__bar skills__bar--80"></div>
-          </div>
-          <div class="skills__item">
-            <p class="skills__tech">CSS</p>
-            <div class="skills__bar skills__bar--70"></div>
-          </div>
-          <div class="skills__item">
-            <p class="skills__tech">Javascript</p>
-            <div class="skills__bar skills__bar--50"></div>
-          </div>
-          <div class="skills__item">
-            <p class="skills__tech">React</p>
-            <div class="skills__bar skills__bar--10"></div>
-          </div>
+      <div class="skills">
+        <div class="skills__item">
+          <p class="skills__tech">HTML</p>
+          <div class="skills__bar skills__bar--80"></div>
         </div>
-      </article>
-      <article class="card">
-        <h2 class="card__title">Back-End</h2>
-        <small>Years of experience 0-3 </small>
-        <div class="skills">
-          <div class="skills__item">
-            <p class="skills__tech">Python</p>
-            <div class="skills__bar skills__bar--50"></div>
-          </div>
+        <div class="skills__item">
+          <p class="skills__tech">CSS</p>
+          <div class="skills__bar skills__bar--70"></div>
+        </div>
+        <div class="skills__item">
+          <p class="skills__tech">Javascript</p>
+          <div class="skills__bar skills__bar--50"></div>
+        </div>
+        <div class="skills__item">
+          <p class="skills__tech">React</p>
+          <div class="skills__bar skills__bar--10"></div>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <h2 class="card__title">Back-End</h2>
+      <small>Years of experience 0-3 </small>
+      <div class="skills">
+        <div class="skills__item">
+          <p class="skills__tech">Python</p>
+          <div class="skills__bar skills__bar--50"></div>
+        </div>
 
-          <div class="skills__item">
-            <p class="skills__tech">SQL</p>
-            <div class="skills__bar skills__bar--30"></div>
-          </div>
-          <div class="skills__item">
-            <p class="skills__tech">Django</p>
-            <div class="skills__bar skills__bar--30"></div>
-          </div>
-          <div class="skills__item">
-            <p class="skills__tech">Wordpress</p>
-            <div class="skills__bar skills__bar--70"></div>
-          </div>
+        <div class="skills__item">
+          <p class="skills__tech">SQL</p>
+          <div class="skills__bar skills__bar--30"></div>
         </div>
-      </article>
+        <div class="skills__item">
+          <p class="skills__tech">Django</p>
+          <div class="skills__bar skills__bar--30"></div>
+        </div>
+        <div class="skills__item">
+          <p class="skills__tech">Wordpress</p>
+          <div class="skills__bar skills__bar--70"></div>
+        </div>
+      </div>
+    </article>
 
-      <article class="card">
-        <h2 class="card__title">Design & Multimedia</h2>
-        <small>Years of experience 0-3 </small>
-        <div class="skills">
-          <div class="skills__item">
-            <p class="skills__tech">Photoshop</p>
-            <div class="skills__bar skills__bar--60"></div>
-          </div>
-          <div class="skills__item">
-            <p class="skills__tech">Video Edition</p>
-            <div class="skills__bar skills__bar--60"></div>
-          </div>
-          <div class="skills__item">
-            <p class="skills__tech">Figma</p>
-            <div class="skills__bar skills__bar--30"></div>
-          </div>
-          <div class="skills__item">
-            <p class="skills__tech">Slack</p>
-            <div class="skills__bar skills__bar--40"></div>
-          </div>
+    <article class="card">
+      <h2 class="card__title">Design & Multimedia</h2>
+      <small>Years of experience 0-3 </small>
+      <div class="skills">
+        <div class="skills__item">
+          <p class="skills__tech">Photoshop</p>
+          <div class="skills__bar skills__bar--60"></div>
         </div>
-      </article>
+        <div class="skills__item">
+          <p class="skills__tech">Video Edition</p>
+          <div class="skills__bar skills__bar--60"></div>
+        </div>
+        <div class="skills__item">
+          <p class="skills__tech">Figma</p>
+          <div class="skills__bar skills__bar--30"></div>
+        </div>
+        <div class="skills__item">
+          <p class="skills__tech">Slack</p>
+          <div class="skills__bar skills__bar--40"></div>
+        </div>
+      </div>
+    </article>
 
-      <!--módulo de jobs -->
-      
-      <h2 class="card__title">Projects</h2>
-      {% for project in page_obj %}
-      <article class="card card--project">
-        <div class="card__image-container">
-          <img src={{ project.image.url }} alt={{ project.title }} class="card__image" data-bs-toggle="modal" data-bs-target="#modal{{ project.id }}" />
+    <!--módulo de jobs -->
+
+    <h2 class="card__title">Projects</h2>
+    {% for project in page_obj %}
+    <article class="card card--project">
+      <div class="card__image-container">
+        <img src={{ project.image.url }} alt={{ project.title }} class="card__image" data-bs-toggle="modal"
+          data-bs-target="#modal{{ project.id }}" />
+      </div>
+      <div class="project">
+        <div class="project__tags">
+          {% for tag in project.tags.all %}
+          <span class="project__tag">{{ tag.name }}</span>
+          {% endfor %}
+
         </div>
-        <div class="project">
-          <div class="project__tags">
-            {% for tag in project.tags.all %}
-            <span class="project__tag">{{ tag.name }}</span>
-            {% endfor %}
-            
-          </div>
-          <h2 class="card__title">{{ project.title }}</h2>
-          
-          <p class="card__text">
-            {{ project.description }}
-          </p>
-          <div class="buttons">
-            {% if project.demo %}
-          
-            <a type="button" class="button button--primary" data-bs-toggle="tooltip" data-bs-placement="top" title="See Demo" onclick="window.open('{{ project.demo }}', '_blank')">
-                Demo
-            </a>  
-            {% endif %}  
-            {% if project.github %}
-            <a type="button" class="button button--ghost" data-bs-toggle="tooltip" data-bs-placement="top" title="See code" onclick="window.open('{{ project.github }}', '_blank')">
-              Code
-            </a>
-            {% endif %}  
-            
-          </div>
+        <h2 class="card__title">{{ project.title }}</h2>
+
+        <p class="card__text">
+          {{ project.description }}
+        </p>
+        <div class="buttons">
+          {% if project.demo %}
+
+          <a type="button" class="button button--primary" data-bs-toggle="tooltip" data-bs-placement="top"
+            title="See Demo" onclick="window.open('{{ project.demo }}', '_blank')">
+            Demo
+          </a>
+          {% endif %}
+          {% if project.github %}
+          <a type="button" class="button button--ghost" data-bs-toggle="tooltip" data-bs-placement="top"
+            title="See code" onclick="window.open('{{ project.github }}', '_blank')">
+            Code
+          </a>
+          {% endif %}
+
         </div>
-      </article>
-      
-      
-      {% endfor %}
-      <!-- Pagination -->
-      <div class="pagination-container">
-        <ul class="pagination">
-            {% if page_obj.has_previous %}
-            <li>
-                <a href="?page=1">&laquo;</a>
-            </li>
-            <li>
-                <a href="?page={{ page_obj.previous_page_number }}">&lsaquo;</a>
-            </li>
-            {% else %}
-            <li class="disabled">
-                <a href="#">&laquo;</a>
-            </li>
-            <li class="disabled">
-                <a href="#">&lsaquo;</a>
-            </li>
-            {% endif %}
-    
-            {% for num in page_obj.paginator.page_range %}
-            {% if page_obj.number == num %}
-            <li class="active"><a href="#">{{ num }}</a></li>
-            {% else %}
-            <li><a href="?page={{ num }}">{{ num }}</a></li>
-            {% endif %}
-            {% endfor %}
-    
-            {% if page_obj.has_next %}
-            <li>
-                <a href="?page={{ page_obj.next_page_number }}">&rsaquo;</a>
-            </li>
-            <li>
-                <a href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
-            </li>
-            {% else %}
-            <li class="disabled">
-                <a href="#">&rsaquo;</a>
-            </li>
-            <li class="disabled">
-                <a href="#">&raquo;</a>
-            </li>
-            {% endif %}
-        </ul>
+      </div>
+    </article>
+
+
+    {% endfor %}
+    <!-- Pagination -->
+    <div class="pagination-container">
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li>
+          <a href="?page=1">&laquo;</a>
+        </li>
+        <li>
+          <a href="?page={{ page_obj.previous_page_number }}">&lsaquo;</a>
+        </li>
+        {% else %}
+        <li class="disabled">
+          <a href="#">&laquo;</a>
+        </li>
+        <li class="disabled">
+          <a href="#">&lsaquo;</a>
+        </li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <li class="active"><a href="#">{{ num }}</a></li>
+        {% else %}
+        <li><a href="?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <li>
+          <a href="?page={{ page_obj.next_page_number }}">&rsaquo;</a>
+        </li>
+        <li>
+          <a href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+        </li>
+        {% else %}
+        <li class="disabled">
+          <a href="#">&rsaquo;</a>
+        </li>
+        <li class="disabled">
+          <a href="#">&raquo;</a>
+        </li>
+        {% endif %}
+      </ul>
     </div>
-    
-    </section>
-  </main>
+
+  </section>
+</main>
 
 {% endblock %}
