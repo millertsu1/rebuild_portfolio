@@ -34,14 +34,14 @@ def home(request):
     # Obtener todas las experiencias laborales
     experiences = Experience.objects.all().order_by('-start_date')
 
-    # Obtener todos los perfiles 
-    abouts = About.objects.all()
+     # Obtener el perfil activo de About
+    active_about = About.objects.filter(active=True).first()
 
     # Combinar los datos en el contexto
     context = {
         'page_obj': page_obj,
         'experiences': experiences,
-        'abouts': abouts,
+        'active_about': active_about,  # Cambié 'abouts' por 'active_about'
     }
     
     return render(request, 'core/home.html', context)

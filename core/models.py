@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -14,7 +15,7 @@ class Tag(models.Model):
 """ model to projects""" 
 class Projects(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    description = RichTextField()
     tags = models.ManyToManyField(Tag, related_name='projects')
     image = models.ImageField(upload_to='projects/')
     demo = models.URLField(blank=True, max_length=180)
@@ -38,7 +39,7 @@ class Experience(models.Model):
     location = models.CharField(max_length=200)
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True, default='currenctly')
-    description = models.TextField()
+    description = RichTextField()
     tags = models.ManyToManyField(Tag, related_name='experiences')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -53,11 +54,12 @@ class Experience(models.Model):
     
 class About(models.Model):
     name = models.CharField(max_length=200)
-    position =models.CharField(max_length=200)
+    position = models.CharField(max_length=200)
     description = models.TextField()
     image = models.ImageField(upload_to='about/')
     down_resume = models.URLField(blank=True, max_length=180)
     see_resume = models.URLField(blank=True, max_length=180)
+    active = models.BooleanField(default=False)  # Nuevo campo para activar el perfil
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -65,6 +67,11 @@ class About(models.Model):
         verbose_name = 'About'
         ordering = ['-created_at']
 
+    def save(self, *args, **kwargs):
+        if self.active:
+            # Desactivar todos los otros perfiles
+            About.objects.filter(active=True).update(active=False)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

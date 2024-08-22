@@ -12,30 +12,31 @@
     <!-- profile card -->
     <article class="card card--profile">
       <h2 class="card__title">Profile</h2>
-      {% for profile in abouts %}
+      {% if active_about %}
       <div class="card__image-container">
-        <img src={{ profile.image.url }} alt={{ profile.name }} />
+        <img src={{ active_about.image.url }} alt={{ active_about.name }} />
       </div>
       <div class="card__header">
-        <h2 class="card__title">{{ profile.name }} </h2>
-        <p class="card__subtitle">{{ profile.position }} </p>
+        <h2 class="card__title">{{ active_about.name }} </h2>
+        <p class="card__subtitle">{{ active_about.position }} </p>
       </div>
       <div class="card__body">
-        <p class="card_text">
-          {{ profile.description }} </p>
+        <p class="card_text">{{ active_about.description }} </p>
 
         <div class="buttons">
           <a type="button" class="button button--primary" data-bs-toggle="tooltip" data-bs-placement="top"
-            title="See Demo" onclick="window.open('{{ profile.down_resume }}', '_blank')" download="Descargar CV">
+            title="See Demo" onclick="window.open('{{ active_about.down_resume }}', '_blank')" download="Descargar CV">
             Down CV
           </a>
           <a type="button" class="button button--ghost" data-bs-toggle="tooltip" data-bs-placement="top"
-            title="See Demo" onclick="window.open('{{ profile.see_resume }}', '_blank')">
+            title="See Demo" onclick="window.open('{{ active_about.see_resume }}', '_blank')">
             See CV
           </a>
         </div>
       </div>
-      {% endfor %}
+      {% else %}
+      <p>there is not an active profile</p>
+      {% endif %}
     </article>
 
     <!-- tarjetas de la experiencia adquirida -->
