@@ -136,7 +136,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-top: 20px;
+    margin: 0 auto;
 }
 
 .pagination {
@@ -152,22 +152,22 @@
 
 .pagination li a {
     text-decoration: none;
-    color: #007bff;
+    color: var(--primary-color);
     padding: 8px 16px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--text-color);
     border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: var(--cambio-color);
 }
 
 .pagination li a:hover {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .pagination li.active a {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
+    background-color: var(--primary-color);
+    color: #000;
+    border-color: var(--primary-color);
 }
 
 .pagination li.disabled a {

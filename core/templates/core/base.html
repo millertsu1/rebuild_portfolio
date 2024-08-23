@@ -52,6 +52,30 @@
 
     {% block content %} {% endblock %}
 
+    <footer class="header">
+      <div class="switches">
+        <div class="toggle-theme">
+          <p class="toggle-theme__text">Miller Ladino - Portfolio</p>
+        </div>
+      </div>
+      <!-- 
+          --------------------------
+          links para redes sociales 
+        ------------------------------->
+  
+      <div id="social" class="social">
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/miller-systemsengineer/" target="_blank"><img
+              src={% static 'core/img/linkedin.png' %} alt="logo Linkedin enlace" /></a>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/millertsu1" target="_blank"><img src={% static 'core/img/github.png' %}
+              alt="logo GitHub enlace" /></a>
+        </div>
+      </div>
+  
+    </footer>
+
     <script src={% static 'core/js/scripts.js' %}></script>
 
 </body>

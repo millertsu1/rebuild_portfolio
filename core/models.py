@@ -1,5 +1,5 @@
 from django.db import models
-from ckeditor.fields import RichTextField
+
 
 # Create your models here.
 
@@ -15,7 +15,7 @@ class Tag(models.Model):
 """ model to projects""" 
 class Projects(models.Model):
     title = models.CharField(max_length=200)
-    description = RichTextField()
+    description = models.TextField()
     tags = models.ManyToManyField(Tag, related_name='projects')
     image = models.ImageField(upload_to='projects/')
     demo = models.URLField(blank=True, max_length=180)
@@ -39,7 +39,7 @@ class Experience(models.Model):
     location = models.CharField(max_length=200)
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True, default='currenctly')
-    description = RichTextField()
+    description = models.TextField()
     tags = models.ManyToManyField(Tag, related_name='experiences')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
