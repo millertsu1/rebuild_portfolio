@@ -92,7 +92,7 @@
     justify-content: space-between;
     align-items: center;
     height: 20px;
-    width: 100px;
+    width: 120px;
   }
   .colors__item {
     width: 20px;
@@ -100,6 +100,9 @@
     border: 1px solid var(--text-color);
     background-color: var(--primary-color);
     cursor: pointer;
+  }
+  .colors__item--red {
+    --primary-color: hsl(12 100% 40.2%);
   }
   
   .colors__item--blue {
@@ -161,7 +164,7 @@
 
 .pagination li a:hover {
     background-color: var(--primary-color);
-    color: var(--primary-color);
+    color: #000;
 }
 
 .pagination li.active a {
